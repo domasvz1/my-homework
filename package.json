@@ -7,11 +7,15 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "typecheck": "tsc --noEmit",
-    "prepare": "husky",
     "refresh-steps": "codeceptjs def",
     "test": "codeceptjs run --steps",
     "test:headed": "codeceptjs run --steps --debug",
+    "test:category": "codeceptjs run --steps --grep @category-filtering",
+    "test:category:headed": "codeceptjs run --steps --grep @category-filtering --debug",
     "test:download": "codeceptjs run --steps --grep @download",
+    "test:download:headed": "codeceptjs run --steps --grep @download --debug",
+    "test:all": "codeceptjs run --steps --grep \"@category-filtering|@download\"",
+    "test:all:headed": "codeceptjs run --steps --grep \"@category-filtering|@download\" --debug",
     "debug": "codeceptjs run --steps --grep @debug --debug"
   },
   "keywords": [

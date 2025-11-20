@@ -40,11 +40,15 @@ export const config = {
       './step_definitions/wallpaper-steps.ts',
       './step_definitions/navigation-steps.ts',
       './step_definitions/premium-steps.ts',
-      './step_definitions/login-steps.ts'
+      './step_definitions/login-steps.ts',
+      './step_definitions/category-steps.ts',
+      './step_definitions/tag-steps.ts',
+      './step_definitions/price-steps.ts',
+      './step_definitions/color-steps.ts',
+      './step_definitions/wallpaper-details-steps.ts'
     ]
   },
   include: {
-    wallpaperPage: './pages/WallpaperPage.ts',
     cookiePage: './pages/CookiePage.ts',
     downloadPage: './pages/DownloadPage.ts',
     verificationPage: './pages/VerificationPage.ts',
@@ -52,7 +56,12 @@ export const config = {
     searchPage: './pages/SearchPage.ts',
     navigationPage: './pages/NavigationPage.ts',
     premiumPage: './pages/PremiumPage.ts',
-    loginPage: './pages/LoginPage.ts'
+    loginPage: './pages/LoginPage.ts',
+    categoryPage: './pages/CategoryPage.ts',
+    tagPage: './pages/TagPage.ts',
+    pricePage: './pages/PricePage.ts',
+    colorPage: './pages/ColorPage.ts',
+    wallpaperDetailsPage: './pages/WallpaperDetailsPage.ts'
   },
   plugins: {
     screenshotOnFail: {

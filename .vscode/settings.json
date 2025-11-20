@@ -1,6 +1,11 @@
 {
   "cucumberautocomplete.steps": [
-    "step_definitions/**/*.ts"
+    "step_definitions/**/*.ts",
+    "step_definitions/category-steps.ts",
+    "step_definitions/tag-steps.ts",
+    "step_definitions/price-steps.ts",
+    "step_definitions/color-steps.ts",
+    "step_definitions/wallpaper-details-steps.ts"
   ],
   "cucumberautocomplete.syncfeatures": "features/**/*.feature",
   "cucumberautocomplete.strictGherkinCompletion": true,
@@ -17,13 +22,14 @@
   "cucumberautocomplete.customParameters": [
     {
       "parameter": "{string}",
-      "value": "([^\"]*)"
+      "value": "\"([^\"]*)\""
     },
     {
       "parameter": "{int}",
       "value": "(\\d+)"
     }
   ],
+  "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)\\(",
   "editor.quickSuggestions": {
     "comments": false,
     "strings": true,

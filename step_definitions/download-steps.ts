@@ -1,4 +1,4 @@
-const { wallpaperPage, cookiePage, downloadPage, verificationPage } = inject();
+const { cookiePage, downloadPage, verificationPage } = inject();
 
 Given('I am on the wallpapers page for {string}', async (category: string) => {
   await downloadPage.navigateToSearch(category);
@@ -8,22 +8,16 @@ Given('I accept cookie consent if present', async () => {
   await cookiePage.acceptCookiesIfPresent();
 });
 
-When('I find and click a free wallpaper', async () => {
-  await wallpaperPage.clickFirstFreeWallpaper();
-});
-
-When('I find and click a premium wallpaper', async () => {
-  await wallpaperPage.clickFirstPremiumWallpaper();
-});
-
-When('I find and click a free wallpaper from {string}', async (category: string) => {
-  await downloadPage.navigateToSearch(category);
-  await cookiePage.acceptCookiesIfPresent();
-  await wallpaperPage.clickFirstFreeWallpaper();
-});
-
 Then('I see the download button', async () => {
   await downloadPage.waitForDownloadButton();
+});
+
+When('I prepare to save download as {string}', async (filename: string) => {
+  await downloadPage.prepareDownloadHandler(filename);
+});
+
+When('I click the download button', async () => {
+  await downloadPage.clickDownloadButtonOnly();
 });
 
 When('I click the download button and save as {string}', async (filename: string) => {

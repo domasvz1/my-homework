@@ -16,6 +16,14 @@ class DownloadPage {
     await I.waitForElement(DownloadLocators.downloadButton, 10);
   }
   
+  async prepareDownloadHandler(filename: string) {
+    await I.handleDownloads(filename);
+  }
+
+  async clickDownloadButtonOnly() {
+    await I.click(DownloadLocators.downloadButton);
+  }
+
   async clickDownloadButton(filename: string) {
     await I.handleDownloads(filename);
     await I.click(DownloadLocators.downloadButton);

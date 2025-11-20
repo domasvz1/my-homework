@@ -1,10 +1,8 @@
-const { I } = inject();
+import clickHelper = require('../tests/helpers/ClickHelper');
 
 class AdPage {
   async closeAdIfPresent() {
-    await I.usePlaywrightTo('click at coordinates', async ({ page }) => {
-      await page.mouse.click(100, 100);
-    });
+    await clickHelper.clickAtCoordinates(100, 100);
   }
 }
 

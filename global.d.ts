@@ -13,6 +13,7 @@ declare function inject(): {
   navigationPage: typeof import('./pages/NavigationPage');
   premiumPage: typeof import('./pages/PremiumPage');
   loginPage: typeof import('./pages/LoginPage');
+  categoryPage: typeof import('./pages/CategoryPage');
 };
 
 declare function locate(selector: string): CodeceptJS.LocatorOrString;
