@@ -1,0 +1,47 @@
+{
+  "name": "wallpaper-portal-tests",
+  "version": "1.0.0",
+  "description": "Automated tests for wallpaper portal search functionality",
+  "scripts": {
+    "setup": "node setup.js",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky",
+    "refresh-steps": "codeceptjs def",
+    "test": "codeceptjs run --steps",
+    "test:headed": "codeceptjs run --steps --debug",
+    "test:download": "codeceptjs run --steps --grep @download",
+    "debug": "codeceptjs run --steps --grep @debug --debug"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "testing",
+    "e2e",
+    "codeceptjs",
+    "bdd"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@codeceptjs/configure": "^0.10.0",
+    "@codeceptjs/ui": "^0.4.7",
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.10.0",
+    "@types/sharp": "^0.32.0",
+    "@typescript-eslint/eslint-plugin": "^8.47.0",
+    "@typescript-eslint/parser": "^8.47.0",
+    "codeceptjs": "^3.5.0",
+    "eslint": "^9.39.1",
+    "eslint-plugin-check-file": "^3.3.1",
+    "husky": "^9.1.7",
+    "playwright": "^1.40.0",
+    "sharp": "^0.34.5",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}

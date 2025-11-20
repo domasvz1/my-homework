@@ -1,0 +1,11 @@
+node_modules/
+test-results/
+playwright-report/
+playwright/.cache/
+downloads/
+output/
+*.log
+.DS_Store
+.env
+task.txt
+WIP.md
