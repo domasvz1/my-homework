@@ -20,17 +20,17 @@ class DownloadPage {
     await I.handleDownloads(filename);
   }
 
-  async clickDownloadButtonOnly() {
+  async clickDownloadButton() {
     await I.click(DownloadLocators.downloadButton);
   }
 
-  async clickDownloadButton(filename: string) {
+  async clickDownloadButtonAndHandleDownload(filename: string) {
     await I.handleDownloads(filename);
     await I.click(DownloadLocators.downloadButton);
   }
   
   async waitForAdPopupToDisappear() {
-    await I.waitForInvisible('[role="dialog"]', 20);
+    await I.waitForInvisible(DownloadLocators.adPopup, 20);
   }
   
   getDownloadsDir() {

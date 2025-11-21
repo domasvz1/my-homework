@@ -27,14 +27,11 @@ class PricePage {
   }
 
   async verifyAllWallpapersArePaid() {
-    // await I.wait(2); // Wait for results to load
-    const wallpaperCards = 'a[href^="/wallpapers/"]';
-    await I.waitForElement(wallpaperCards, 10);
-    const totalCards = await I.grabNumberOfVisibleElements(wallpaperCards);
+    await I.waitForElement(PriceLocators.wallpaperCards, 10);
+    const totalCards = await I.grabNumberOfVisibleElements(PriceLocators.wallpaperCards);
     
     // Check each wallpaper for premium icon (paid wallpapers have premium icon)
-    const premiumIconXPath = '//span[contains(@style, "premium")]';
-    const premiumCards = await I.grabNumberOfVisibleElements({xpath: premiumIconXPath});
+    const premiumCards = await I.grabNumberOfVisibleElements(PriceLocators.premiumIcon);
     
     if (premiumCards !== totalCards) {
       throw new Error(`Expected all ${totalCards} wallpapers to be paid, but only ${premiumCards} have premium icons`);
@@ -42,14 +39,10 @@ class PricePage {
   }
 
   async verifyAllWallpapersAreFree() {
-    // await I.wait(2); // Wait for results to load
-    const wallpaperCards = 'a[href^="/wallpapers/"]';
-    // await I.waitForElement(wallpaperCards, 10);
-    const totalCards = await I.grabNumberOfVisibleElements(wallpaperCards);
+    const totalCards = await I.grabNumberOfVisibleElements(PriceLocators.wallpaperCards);
     
     // Check that NO wallpapers have premium icon (free wallpapers don't have the icon)
-    const premiumIconXPath = '//span[contains(@style, "premium")]';
-    const premiumCards = await I.grabNumberOfVisibleElements({xpath: premiumIconXPath});
+    const premiumCards = await I.grabNumberOfVisibleElements(PriceLocators.premiumIcon);
     
     if (premiumCards > 0) {
       throw new Error(`Expected all ${totalCards} wallpapers to be free, but ${premiumCards} have premium icons`);

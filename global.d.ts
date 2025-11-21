@@ -4,7 +4,6 @@ declare const I: CodeceptJS.I;
 
 declare function inject(): {
   I: CodeceptJS.I;
-  wallpaperPage: typeof import('./pages/WallpaperPage');
   cookiePage: typeof import('./pages/CookiePage');
   downloadPage: typeof import('./pages/DownloadPage');
   verificationPage: typeof import('./pages/VerificationPage');
@@ -14,6 +13,11 @@ declare function inject(): {
   premiumPage: typeof import('./pages/PremiumPage');
   loginPage: typeof import('./pages/LoginPage');
   categoryPage: typeof import('./pages/CategoryPage');
+  tagPage: typeof import('./pages/TagPage');
+  pricePage: typeof import('./pages/PricePage');
+  colorPage: typeof import('./pages/ColorPage');
+  wallpaperDetailsPage: typeof import('./pages/WallpaperDetailsPage');
+  waitHelper: typeof import('./tests/helpers/WaitHelper');
 };
 
 declare function locate(selector: string): CodeceptJS.LocatorOrString;

@@ -17,13 +17,13 @@ class ColorPage {
   }
 
   async selectColor(colorName: string) {
-    const colorOption = `div[role="option"]:has-text("${colorName}")`;
+    const colorOption = ColorLocators.getColorOption(colorName);
     await I.waitForElement(colorOption, 10);
     await I.click(colorOption);
   }
 
   async verifyColorChip(colorName: string) {
-    const chipLocator = `button[data-size="medium"]:has-text("${colorName}")`;
+    const chipLocator = ColorLocators.getColorChip(colorName);
     await I.waitForElement(chipLocator, 10);
   }
 

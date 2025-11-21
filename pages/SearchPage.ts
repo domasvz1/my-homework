@@ -1,4 +1,5 @@
 import { NavigationLocators } from '../locators/NavigationLocators';
+import { SearchLocators } from '../locators/SearchLocators';
 import { WallpaperLocators } from '../locators/WallpaperLocators';
 
 const { I } = inject();
@@ -10,13 +11,24 @@ class SearchPage {
     await I.waitForElement(WallpaperLocators.wallpaperCards, 10);
   }
 
+  async selectWallpapersCategoryIn(location: 'navigation search bar' | 'main search bar') {
+    const index = location === 'navigation search bar' ? 1 : 2;
+    await I.waitForElement(SearchLocators.categoryDropdown, 10);
+    await I.click(locate(SearchLocators.categoryDropdown).at(index));
+    await I.waitForElement(SearchLocators.wallpapersOption, 10);
+    await I.click(SearchLocators.wallpapersOption);
+  }
+
+  async searchForKeywordIn(keyword: string, location: 'navigation search bar' | 'main search bar') {
+    const index = location === 'navigation search bar' ? 1 : 2;
+    await I.fillField(locate(SearchLocators.searchInput).at(index), keyword);
+    await I.click(locate(SearchLocators.searchButton).at(index));
+    await I.waitForElement(WallpaperLocators.wallpaperCards, 10);
+  }
+
   async verifyNoResultsMessage() {
-    // await I.wait(2); // Wait for search results to load
-    // Check if there are minimal wallpaper cards (nonsense searches may show 1-2 sponsored/default results)
-    const wallpaperCards = 'a[href^="/wallpapers/"]';
-    const cardCount = await I.grabNumberOfVisibleElements(wallpaperCards);
+    const cardCount = await I.grabNumberOfVisibleElements(WallpaperLocators.wallpaperCards);
     
-    // For a truly nonsense search, expect very few results (< 5)
     if (cardCount >= 5) {
       throw new Error(`Expected minimal/no results for nonsense search, but found ${cardCount} wallpapers`);
     }

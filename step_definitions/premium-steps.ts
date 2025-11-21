@@ -16,6 +16,10 @@ Then('I see the watch ad button', async () => {
   await premiumPage.verifyWatchAdButtonVisible();
 });
 
-When('I watch the ad to unlock premium content', async () => {
+When('I watch the ad to unlock paid content', async () => {
   await premiumPage.clickWatchAd();
+});
+
+Then('I see the unlock modal with ads left', async () => {
+  await premiumPage.verifyUnlockModalWithAdsLeft();
 });

@@ -45,7 +45,8 @@ export const config = {
       './step_definitions/tag-steps.ts',
       './step_definitions/price-steps.ts',
       './step_definitions/color-steps.ts',
-      './step_definitions/wallpaper-details-steps.ts'
+      './step_definitions/wallpaper-details-steps.ts',
+      './step_definitions/wait-steps.ts'
     ]
   },
   include: {
@@ -61,7 +62,8 @@ export const config = {
     tagPage: './pages/TagPage.ts',
     pricePage: './pages/PricePage.ts',
     colorPage: './pages/ColorPage.ts',
-    wallpaperDetailsPage: './pages/WallpaperDetailsPage.ts'
+    wallpaperDetailsPage: './pages/WallpaperDetailsPage.ts',
+    waitHelper: './tests/helpers/WaitHelper.ts'
   },
   plugins: {
     screenshotOnFail: {

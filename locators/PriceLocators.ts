@@ -14,4 +14,10 @@ export const PriceLocators = {
   // Price chip
   getPriceChip: (priceType: string) =>
     `button[data-size="medium"]:has-text("${priceType}")`,
+  
+  // Wallpaper cards (for verification)
+  wallpaperCards: 'a[href^="/wallpapers/"]',
+  
+  // Premium icon (indicates paid wallpaper)
+  premiumIcon: {xpath: '//span[contains(@style, "premium")]'},
 } as const;

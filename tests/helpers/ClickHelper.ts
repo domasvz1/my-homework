@@ -10,7 +10,6 @@ class ClickHelper {
     await I.usePlaywrightTo('click at coordinates', async ({ page }) => {
       await page.mouse.click(x, y);
     });
-    // await I.wait(0.5);
   }
 }
 

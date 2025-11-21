@@ -36,6 +36,38 @@ class VerificationPage {
   async verifyFileDownloaded(downloadsDir: string) {
     await this.getMostRecentDownload(downloadsDir);
   }
+
+  async verifySpecificFileDownloaded(downloadsDir: string, expectedFilename: string) {
+    const expectedPath = path.join(downloadsDir, expectedFilename);
+    
+    // Wait up to 10 seconds for the file to appear
+    const maxWaitTime = 10000; // 10 seconds
+    const checkInterval = 500; // Check every 500ms
+    let waitedTime = 0;
+    
+    while (!fs.existsSync(expectedPath) && waitedTime < maxWaitTime) {
+      await new Promise(resolve => setTimeout(resolve, checkInterval));
+      waitedTime += checkInterval;
+    }
+    
+    if (!fs.existsSync(expectedPath)) {
+      throw new Error(`Expected file "${expectedFilename}" was not downloaded to ${downloadsDir} after ${maxWaitTime/1000} seconds`);
+    }
+    
+    console.log(`✓ Verified file downloaded: ${expectedFilename}`);
+    this.setDownloadedFile(expectedPath);
+  }
+
+  async deleteDownloadedFile(downloadsDir: string, filename: string) {
+    const filePath = path.join(downloadsDir, filename);
+    
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath);
+      console.log(`✓ Cleaned up: ${filename}`);
+    } else {
+      console.log(`File not found for cleanup: ${filename}`);
+    }
+  }
   
   async verifyFileSize() {
     if (!this.downloadedFilePath) {

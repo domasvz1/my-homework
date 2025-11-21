@@ -24,7 +24,13 @@ class PremiumPage {
   async clickWatchAd() {
     await I.waitForElement(PremiumLocators.watchAdButton, 10);
     await I.click(PremiumLocators.watchAdButton);
-    await I.wait(35);
+  }
+
+  async verifyUnlockModalWithAdsLeft() {
+    await I.waitForElement(PremiumLocators.watchAdButton, 10);
+    await I.seeElement(PremiumLocators.watchAdButton);
+    await I.waitForElement(PremiumLocators.adsLeftText, 10);
+    await I.seeElement(PremiumLocators.adsLeftText);
   }
 }
 

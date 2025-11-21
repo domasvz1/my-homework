@@ -1,4 +1,5 @@
 import { CategoryLocators } from '../locators/CategoryLocators';
+import { WallpaperLocators } from '../locators/WallpaperLocators';
 import clickHelper = require('../tests/helpers/ClickHelper');
 const { I } = inject();
 
@@ -75,10 +76,8 @@ class CategoryPage {
   }
 
   async verifyOnlyCategoryWallpapers(categoryName: string) {
-    // await I.wait(2);
-    const wallpaperCards = 'a.A_link__OxrAl[href^="/wallpapers/"]';
-    await I.waitForElement(wallpaperCards, 10);
-    const count = await I.grabNumberOfVisibleElements(wallpaperCards);
+    await I.waitForElement(WallpaperLocators.wallpaperCards, 10);
+    const count = await I.grabNumberOfVisibleElements(WallpaperLocators.wallpaperCards);
     
     if (count === 0) {
       throw new Error(`No wallpapers found for category "${categoryName}"`);

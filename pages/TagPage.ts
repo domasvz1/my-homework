@@ -13,10 +13,9 @@ class TagPage {
 
   async checkFirstTagOption() {
     // Skip the first option (likely search input), click the second actual tag
-    await I.waitForElement('[role="option"]', 10);
-    const secondOption = '[role="option"]:nth-child(2)';
-    await I.waitForElement(secondOption, 10);
-    await I.click(secondOption);
+    await I.waitForElement(TagLocators.tagOption, 10);
+    await I.waitForElement(TagLocators.secondTagOption, 10);
+    await I.click(TagLocators.secondTagOption);
   }
 
   async verifyTagChipVisible() {

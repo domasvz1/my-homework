@@ -11,4 +11,13 @@ export const WallpaperDetailsLocators = {
   
   // Any tag chip link
   tagLinks: 'a[href^="/wallpapers?keyword="]',
+  
+  // Wallpaper cards (for clicking first wallpaper)
+  wallpaperCards: 'a[href^="/wallpapers/"]',
+  
+  // Filter chips on wallpaper pages
+  filterChips: 'button[data-size="medium"][data-appearance="primary"]',
+  
+  // Color chips with detailed class
+  colorChipsDetailed: '.Chip_chip__4E4jb[data-size="medium"][data-appearance="primary"]',
 } as const;

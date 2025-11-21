@@ -10,7 +10,7 @@ Feature: Category Filtering
     When I click on "Browse Now" button on navigation bar
 
   @filter @category
-  Scenario Outline: Filter by category on ringtones and wallpapers page
+  Scenario Outline: Select category from homepage dropdown and navigate to wallpapers page
     Then I am on "/ringtones-and-wallpapers" page
     When I click on the category filter button
     Then I see the category dropdown
@@ -26,7 +26,7 @@ Feature: Category Filtering
       | Animals    | categories=ANIMALS  | animals    |
 
   @filter @category
-  Scenario Outline: Filter by category on Wallpapers page
+  Scenario Outline: Select single category from wallpapers page dropdown and verify URL and chip
     When I click on Wallpapers tab
     When I click on the category dropdown
     Then I see the category dropdown
@@ -42,7 +42,7 @@ Feature: Category Filtering
       | Technology | categories=TECHNOLOGY | technology |
 
   @filter @multi-select
-  Scenario: Select multiple categories
+  Scenario: Select multiple categories simultaneously and verify all appear in URL and chips
     When I click on Wallpapers tab
     When I click on the category dropdown
     Then I see the category dropdown
@@ -55,7 +55,7 @@ Feature: Category Filtering
     And I see the category chip "animals"
 
   @filter @deselect
-  Scenario: Deselect category via dropdown
+  Scenario: Remove category filter by unchecking in dropdown
     When I click on Wallpapers tab
     When I click on the category dropdown
     Then I see the category dropdown
@@ -68,7 +68,7 @@ Feature: Category Filtering
     Then I do not see the category chip "technology"
 
   @filter @deselect-chip
-  Scenario: Deselect category via chip X button
+  Scenario: Remove category filter by clicking X button on chip
     When I click on Wallpapers tab
     When I click on the category dropdown
     Then I see the category dropdown
@@ -81,7 +81,7 @@ Feature: Category Filtering
   @filter @clear-all
   # discovered bug via main page category selection, it transfers to the wallpapers page, but if another cateory is slected, 
   # the initially selected one is cleared automatically
-  Scenario: Clear all category filters with reset all
+  Scenario: Clear all selected category filters using reset all button
     When I click on Wallpapers tab
     When I click on the category dropdown
     Then I see the category dropdown
@@ -101,7 +101,7 @@ Feature: Category Filtering
     And I do not see the category chip "nature"
 
   @filter @persistence
-  Scenario: Category filter persists when navigating to wallpapers tab
+  Scenario: Verify category filter persists when navigating from homepage to wallpapers tab
     Then I am on "/ringtones-and-wallpapers" page
     When I click on the category filter button
     Then I see the category dropdown
@@ -113,7 +113,7 @@ Feature: Category Filtering
   @filter @combination
   # BUG DISCOVERED: Wallpapers filtered by tag don't show the filtered tag on details page
   # The wallpaper is returned in tag filter results but the tag is missing from wallpaper details
-  Scenario: Combine category with tag filter
+  Scenario: Apply both category and tag filters together and verify on details page
     When I click on Wallpapers tab
     When I click on the category dropdown
     Then I see the category dropdown
@@ -133,7 +133,7 @@ Feature: Category Filtering
     # And I see the selected tag on wallpaper details page  # DISABLED: Bug - filtered tag not present on details
 
   @filter @price
-  Scenario: Filter by free wallpapers only
+  Scenario: Filter wallpapers by free price and verify all results are free
     When I click on Wallpapers tab
     When I click on the price dropdown
     Then I see the price dropdown
@@ -144,7 +144,7 @@ Feature: Category Filtering
     And I verify all wallpapers are free
 
   @filter @price
-  Scenario: Filter by paid wallpapers only
+  Scenario: Filter wallpapers by paid price and verify all results are paid
     When I click on Wallpapers tab
     When I click on the price dropdown
     Then I see the price dropdown
@@ -155,7 +155,7 @@ Feature: Category Filtering
     And I verify all wallpapers are paid
 
   @filter @color
-  Scenario: Filter by color and verify tag on details
+  Scenario: Filter wallpapers by color and verify color tag appears on details page
     When I click on Wallpapers tab
     When I click on the color dropdown
     Then I see the color dropdown
@@ -169,19 +169,19 @@ Feature: Category Filtering
     And I see tag "black" on wallpaper details page
 
   @filter @all-categories-visible
-  Scenario: All categories are visible on ringtones and wallpapers page
+  Scenario: Verify all category options are visible in homepage dropdown
     When I click on the category filter button
     Then I see the category dropdown
     And I verify all categories are visible
 
   @filter @all-categories-visible
-  Scenario: All categories are visible on wallpapers page
+  Scenario: Verify all category options are visible in wallpapers page dropdown
     When I click on Wallpapers tab
     When I click on the category dropdown
     Then I see the category dropdown
     And I verify all categories are visible
 
   @filter @no-results
-  Scenario: Minimal results for nonsense search
+  Scenario: Verify no results message appears for nonsense search query
     When I search for wallpapers with keyword "xyzabc123nonexistent"
     Then I see no results message

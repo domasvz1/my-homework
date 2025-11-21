@@ -3,5 +3,6 @@ export const DownloadLocators = {
   detailPageTitle: 'h1[data-size="xl"]',
   downloadCount: 'p.label-lg',
   downloadModalClose: 'button[aria-label="Close"]',
-  downloadModal: 'div[role="dialog"]'
+  downloadModal: 'div[role="dialog"]',
+  adPopup: '[role="dialog"]',
 } as const;

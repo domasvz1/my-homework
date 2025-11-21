@@ -17,11 +17,11 @@ When('I prepare to save download as {string}', async (filename: string) => {
 });
 
 When('I click the download button', async () => {
-  await downloadPage.clickDownloadButtonOnly();
+  await downloadPage.clickDownloadButton();
 });
 
 When('I click the download button and save as {string}', async (filename: string) => {
-  await downloadPage.clickDownloadButton(filename);
+  await downloadPage.clickDownloadButtonAndHandleDownload(filename);
 });
 
 When('I wait for the ad popup to disappear', async () => {
@@ -31,6 +31,16 @@ When('I wait for the ad popup to disappear', async () => {
 Then('I verify the file is downloaded', async () => {
   const downloadsDir = downloadPage.getDownloadsDir();
   await verificationPage.verifyFileDownloaded(downloadsDir);
+});
+
+Then('I verify the file {string} is downloaded', async (filename: string) => {
+  const downloadsDir = downloadPage.getDownloadsDir();
+  await verificationPage.verifySpecificFileDownloaded(downloadsDir, filename);
+});
+
+Then('I delete the downloaded file {string}', async (filename: string) => {
+  const downloadsDir = downloadPage.getDownloadsDir();
+  await verificationPage.deleteDownloadedFile(downloadsDir, filename);
 });
 
 Then('I verify the file has valid size', async () => {
