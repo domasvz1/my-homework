@@ -1,5 +1,5 @@
 import { LoginLocators } from '../locators/LoginLocators';
-import clickHelpers = require('../tests/helpers/ClickHelpers');
+import clickHelper = require('../tests/helpers/ClickHelper');
 
 const { I } = inject();
 
@@ -13,7 +13,7 @@ class LoginPage {
     // WIP: Using clickUntilInvisible helper to handle navigation issues
     // Sometimes the first click doesn't trigger navigation, so we retry until button disappears
     // TODO: Replace with proper page load detection
-    await clickHelpers.clickUntilInvisible(LoginLocators.continueWithEmailButton, 5, 1000);
+    await clickHelper.clickUntilInvisible(LoginLocators.continueWithEmailButton, 5, 1000);
     
     // Fill email and continue
     await I.waitForElement(LoginLocators.emailInput, 15);

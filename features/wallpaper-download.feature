@@ -72,7 +72,7 @@ Feature: Wallpaper Download
     # Then I verify the file "paid-with-login-modal.jpg" is downloaded
     # And I delete the downloaded file "paid-with-login-modal.jpg"
 
-  @download @paid @ad-watching @debug
+  @download @paid @ad-watching
   Scenario: Verify watch ad button appears for paid wallpaper when already logged in
     When I click on Sign in button
     And I login with credentials from environment

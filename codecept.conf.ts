@@ -18,14 +18,32 @@ export const config = {
     Playwright: {
       url: process.env.BASE_URL,
       show: true,
-      browser: 'chromium',
+      
+      // Browser selection - change to 'firefox' or 'webkit' for different browsers
+      browser: 'chromium',  // Options: 'chromium', 'firefox', 'webkit'
+      
       windowSize: '1920x1080',
       waitForTimeout: 10000,
       waitForAction: 1000,
       timeout: 30000,
+      
+      // Video recording for test execution - embedded in Allure reports
+      video: './output/videos/',
+      keepVideoForPassedTests: true,
+      
+      // Browser-specific configuration (chromium/firefox/webkit)
       chromium: {
         args: ['--disable-blink-features=AutomationControlled']
       },
+      // Uncomment for Firefox-specific settings:
+      // firefox: {
+      //   firefoxUserPrefs: {}
+      // },
+      // Uncomment for WebKit-specific settings:
+      // webkit: {
+      //   ignoreHTTPSErrors: true
+      // },
+      
       contextOptions: {
         acceptDownloads: true
       }
@@ -74,6 +92,12 @@ export const config = {
     },
     tryTo: {
       enabled: true
+    },
+    allure: {
+      enabled: true,
+      require: 'allure-codeceptjs',
+      outputDir: './output/allure-results',
+      enableScreenshotDiffPlugin: false,
     }
   },
   require: ['ts-node/register'],
